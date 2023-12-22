@@ -6,7 +6,7 @@
 /*   By: mblonsky <mblonsky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 16:46:45 by mblonsky          #+#    #+#             */
-/*   Updated: 2023/12/22 16:26:29 by mblonsky         ###   ########.fr       */
+/*   Updated: 2023/12/22 19:44:13 by mblonsky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ int	ft_format(char *format, va_list variadic_args)
 	if (*format == 'c')
 	{
 		count += ft_putchar(va_arg(variadic_args, int));
+	}
+	else if (*format == 's')
+	{
+		count += ft_putstr(va_arg(variadic_args, char *));
 	}
 	else
 	{

@@ -1,24 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mblonsky <mblonsky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/30 12:18:37 by mblonsky          #+#    #+#             */
-/*   Updated: 2023/12/22 20:25:36 by mblonsky         ###   ########.fr       */
+/*   Created: 2023/12/22 20:01:49 by mblonsky          #+#    #+#             */
+/*   Updated: 2023/12/22 20:42:57 by mblonsky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	main(void)
+int	ft_putnbr(int n)
 {
-	int	result;
-
-	result = printf("printf orig\n %c\n %s\n %d\n",'m', "hola", -7777);
-	printf("return: %i\n", result);
-	result = ft_printf("printf mine\n %c\n %s\n %d\n",'m', "hola", -7777);
-	printf("return: %i\n", result);
-	return (0);
+	int	count;
+	
+	count = 0;
+	if (n == -2147483648)
+	{
+		count += ft_putchar('-');
+		count += ft_putchar('2');
+		//n = 147483648;
+	}
+	if (n < 0)
+	{
+		count += ft_putchar('-');
+		n = -n;
+	}
+	else
+	{
+		if (n <= 9)
+		{
+			count += ft_putchar(n + '0');
+		}
+		else
+		{
+			count += ft_putnbr(n / 10);
+			count += ft_putchar(n % 10 + '0');
+		}
+	}
+	return (count);
 }

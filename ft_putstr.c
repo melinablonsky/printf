@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mblonsky <mblonsky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/30 12:18:37 by mblonsky          #+#    #+#             */
-/*   Updated: 2023/12/22 20:25:36 by mblonsky         ###   ########.fr       */
+/*   Created: 2023/12/22 19:33:57 by mblonsky          #+#    #+#             */
+/*   Updated: 2023/12/22 20:02:09 by mblonsky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	main(void)
+int	ft_putstr(char *str)
 {
-	int	result;
+	int	count;
 
-	result = printf("printf orig\n %c\n %s\n %d\n",'m', "hola", -7777);
-	printf("return: %i\n", result);
-	result = ft_printf("printf mine\n %c\n %s\n %d\n",'m', "hola", -7777);
-	printf("return: %i\n", result);
-	return (0);
+	count = 0;
+	if(!str)
+	{
+		str = "(null)";
+	}
+	while (*str)
+	{
+		count += ft_putchar(*str);
+		str++;
+	}
+	return (count);
 }
