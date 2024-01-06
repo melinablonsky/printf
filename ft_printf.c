@@ -6,25 +6,27 @@
 /*   By: mblonsky <mblonsky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 16:46:45 by mblonsky          #+#    #+#             */
-/*   Updated: 2023/12/22 19:44:13 by mblonsky         ###   ########.fr       */
+/*   Updated: 2024/01/06 14:41:34 by mblonsky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_format(char *format, va_list variadic_args)
+int	ft_format(char *format, va_list variadicargs)
 {
 	int	count;
 
 	count = 0;
 	if (*format == 'c')
-	{
-		count += ft_putchar(va_arg(variadic_args, int));
-	}
+		count += ft_putchar(va_arg(variadicargs, int));
 	else if (*format == 's')
-	{
-		count += ft_putstr(va_arg(variadic_args, char *));
-	}
+		count += ft_putstr(va_arg(variadicargs, char *));
+	else if (*format == 'd' || *format == 'i')
+		count += ft_putnbr(va_arg(variadicargs, int));
+	else if (*format == '%')
+		count += ft_putchar(*format);
+	else if (*format == 'u')
+		count += ft_unsint(va_arg(variadicargs, unsigned int));
 	else
 	{
 		return (0);
@@ -34,17 +36,17 @@ int	ft_format(char *format, va_list variadic_args)
 
 int	ft_printf(char const *format, ...)
 {
-	va_list	variadic_args;
+	va_list	variadicargs;
 	int		count;
 
 	count = 0;
-	va_start(variadic_args, format);
+	va_start(variadicargs, format);
 	while (*format != '\0')
 	{
 		if (*format == '%')
 		{
 			format++;
-			count += ft_format((char *)format, variadic_args);
+			count += ft_format((char *)format, variadicargs);
 		}
 		else
 		{
@@ -52,6 +54,6 @@ int	ft_printf(char const *format, ...)
 		}
 		format++;
 	}
-	va_end(variadic_args);
+	va_end(variadicargs);
 	return (count);
 }
