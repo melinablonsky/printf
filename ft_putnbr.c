@@ -6,7 +6,7 @@
 /*   By: mblonsky <mblonsky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 20:01:49 by mblonsky          #+#    #+#             */
-/*   Updated: 2024/01/06 14:48:35 by mblonsky         ###   ########.fr       */
+/*   Updated: 2024/01/10 19:56:24 by mblonsky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_putnbr(int n)
 {
 	int	count;
-	
+
 	count = 0;
 	if (n == -2147483648)
 	{
@@ -26,15 +26,12 @@ int	ft_putnbr(int n)
 	if (n < 0)
 	{
 		count += ft_putchar('-');
-		n = n *(-1);
-		count += ft_putnbr(n);
+		count += ft_putnbr(-n);
 	}
 	else
 	{
 		if (n <= 9)
-		{
 			count += ft_putchar(n + '0');
-		}
 		else
 		{
 			count += ft_putnbr(n / 10);

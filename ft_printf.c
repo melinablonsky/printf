@@ -6,7 +6,7 @@
 /*   By: mblonsky <mblonsky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 16:46:45 by mblonsky          #+#    #+#             */
-/*   Updated: 2024/01/06 14:41:34 by mblonsky         ###   ########.fr       */
+/*   Updated: 2024/01/10 19:37:55 by mblonsky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	ft_format(char *format, va_list variadicargs)
 		count += ft_putchar(*format);
 	else if (*format == 'u')
 		count += ft_unsint(va_arg(variadicargs, unsigned int));
+	else if (*format == 'p')
+		count += ft_putptr(va_arg(variadicargs, unsigned long long));
 	else
 	{
 		return (0);

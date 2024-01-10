@@ -1,23 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mblonsky <mblonsky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/20 20:41:03 by mblonsky          #+#    #+#             */
-/*   Updated: 2024/01/10 19:54:11 by mblonsky         ###   ########.fr       */
+/*   Created: 2024/01/10 19:22:09 by mblonsky          #+#    #+#             */
+/*   Updated: 2024/01/10 20:04:16 by mblonsky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <unistd.h>
 
-int	ft_putchar(char c)
+int	ft_puthexa(unsigned long long hexa)
 {
 	int	count;
 
 	count = 0;
-	count += write(1, &c, 1);
+	if (hexa >= 16)
+	{
+		count += ft_puthexa(hexa / 16);
+		count += ft_puthexa(hexa % 16);
+	}
+	else
+	{
+		if (hexa <= 9)
+			count += ft_putchar(hexa + '0');
+		else
+			count += ft_putchar(hexa - 10 + 'a');
+	}
+	return (count);
+}
+
+int	ft_putptr(unsigned long long ptr)
+{
+	int	count;
+
+	count = 0;
+	count += write(1, "0x", 2);
+	count += ft_puthexa(ptr);
 	return (count);
 }
