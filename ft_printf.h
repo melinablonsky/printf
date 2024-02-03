@@ -6,7 +6,7 @@
 /*   By: mblonsky <mblonsky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 12:11:58 by mblonsky          #+#    #+#             */
-/*   Updated: 2024/01/10 19:52:47 by mblonsky         ###   ########.fr       */
+/*   Updated: 2024/02/03 19:55:44 by mblonsky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	ft_putstr(char *str);
 int	ft_putnbr(int n);
 int	ft_unsint(unsigned int n);
 int	ft_putptr(unsigned long long ptr);
-int	ft_puthexa(unsigned long long hexa);
+int	ft_puthexptr(unsigned long long hexa);
+int	ft_puthexa(unsigned int hexa, char form);
 
 #endif

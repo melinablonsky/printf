@@ -6,7 +6,7 @@
 #    By: mblonsky <mblonsky@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/15 12:25:57 by mblonsky          #+#    #+#              #
-#    Updated: 2024/01/10 19:24:07 by mblonsky         ###   ########.fr        #
+#    Updated: 2024/02/03 19:56:29 by mblonsky         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC =  ft_printf.c\
 	ft_putnbr.c\
 	ft_unsint.c\
 	ft_putptr.c\
+	ft_puthexa.c\
 
 .PHONY: all clean fclean re bonus
 
